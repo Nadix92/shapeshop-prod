@@ -1,12 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
+  <html lang="en">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Shapeshop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>ShapeDiver Viewer v2</title>
+
+  <!-- ShapeDiver Viewer -->
+  <script defer src="https://viewer.shapediver.com/v2/2.18.0/sdv.concat.min.js"></script>
+  <link rel='stylesheet' type='text/css' href='https://viewer.shapediver.com/v2/2.18.0/sdv.css'>
+
+  <!-- BootStrap CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="test3.css" />
+  <!-- Font Awesome cdn -->
+  <script src="https://kit.fontawesome.com/0f6302b19c.js" crossorigin="anonymous"></script>
+
+  <script defer src="test3.js"></script>
 </head>
+
 <body>
-  <h1>Her kommer Shapeshop</h1>
+
+  <!-- ShapeDiver Viewer Container -->
+  <div id='sdv-container'>
+  </div>
+
+  <button type="button" id="reset" class="btn btn-primary btn-lg"><i class="fas fa-video"></i> Recenter Camera</button>
+
+  <section id="parameters">
+    <form>
+
+      
+
+      <template class="dropdowns-template">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Example select</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </template>
+
+      <div class="form-group">
+        <label for="tykk" id="høgde">Høgde: </label>
+        <input class="custom-range" type="range" id="tykk" value="" max="1000">
+      </div>
+
+      <template class="sliders-template">
+        <div class="form-group">
+           <label for="" id="">PlaceHolder: </label>
+          <input class="custom-range" type="range" id="" value="" max="">
+        </div>
+      </template>
+
+     
+
+      <div class="form-group">
+        <label for="formGroupExampleInput">Text</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Text">
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+      </div> -->
+
+      <div class="form-group">
+        <button type="button" id="data" class="btn btn-primary btn-lg">Get Data</button>
+      </div>
+
+    </form>
+  </section>
+
 </body>
+
 </html>
