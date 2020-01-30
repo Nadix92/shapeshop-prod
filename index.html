@@ -12,10 +12,11 @@
 
   <!-- BootStrap CDN -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="test3.css" />
   <!-- Font Awesome cdn -->
   <script src="https://kit.fontawesome.com/0f6302b19c.js" crossorigin="anonymous"></script>
-
+  
+  <!-- internal style/scripts -->
+  <link rel="stylesheet" href="test3.css" />
   <script defer src="test3.js"></script>
 </head>
 
@@ -25,39 +26,40 @@
   <div id='sdv-container'>
   </div>
 
-  <button type="button" id="reset" class="btn btn-primary btn-lg"><i class="fas fa-video"></i> Recenter Camera</button>
+  <button type="button" id="reset" class="btn btn-outline-primary"><i class="fas fa-video"></i> Recenter Camera</button>
 
   <section id="parameters">
     <form>
-
+      <h3><i class="fas fa-sliders-h"></i> Parameters</h3>
+      <hr>
      <!-- slider-name: Høgde -->
       <div class="form-group">
-        <label for="høgde-input" id="høgde-label">Høyde: </label>
-        <input class="custom-range" type="range" id="høgde-input" value="" min="450" max="700" step="10">
+        <label for="høgde-input" id="høgde-label"></label>
+        <input class="slider" type="range" id="høgde-input" value="" min="450" max="700" step="10">
       </div>
-
+      
       <!-- slider-name: Radius -->
       <div class="form-group">
-        <label for="radius-input" id="radius-label">Radius: </label>
-        <input class="custom-range" type="range" id="radius-input" value="" min="0" max="400" step="10">
+        <label for="radius-input" id="radius-label"></label>
+        <input class="slider" type="range" id="radius-input" value="" min="0" max="400" step="10">
       </div>
-
+      
       <!-- slider-name: ToppPlateRadius -->
       <div class="form-group">
-        <label for="topp-plate-radius-input" id="topp-plate-radius-label">ToppPlateRadius: </label>
-        <input class="custom-range" type="range" id="topp-plate-radius-input" value="" min="420" max="600" step="10">
+        <label for="topp-plate-radius-input" id="topp-plate-radius-label"></label>
+        <input class="slider" type="range" id="topp-plate-radius-input" value="" min="420" max="600" step="10">
       </div>
-
+      
       <!-- slider-name: BreddeOppe -->
       <div class="form-group">
-        <label for="bredde-oppe-input" id="bredde-oppe-label">BreddeOppe: </label>
-        <input class="custom-range" type="range" id="bredde-oppe-input" value="" min="400" max="800" step="10">
+        <label for="bredde-oppe-input" id="bredde-oppe-label"></label>
+        <input class="slider" type="range" id="bredde-oppe-input" value="" min="400" max="800" step="10">
       </div>
-
+      
       <!-- slider-name: Bredde -->
       <div class="form-group">
-        <label for="bredde-input" id="bredde-label">Bredde: </label>
-        <input class="custom-range" type="range" id="bredde-input" value="" min="850" max="1000" step="10">
+        <label for="bredde-input" id="bredde-label"></label>
+        <input class="slider" type="range" id="bredde-input" value="" min="850" max="1000" step="10">
       </div>
 
    
