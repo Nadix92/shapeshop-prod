@@ -58,7 +58,7 @@ hr {
 
 #reset {
   position: absolute;
-  left: 83%;
+  right: 4.5%; 
   top: 6%;
   z-index: 2;
   /* margin: 7% 0 7%; */
@@ -77,9 +77,9 @@ hr {
   text-align: center;
 }
 
-#reset {
+/* #reset {
   margin-bottom: 7%;
-}
+} */
 
 #sdv-container {
   position: absolute;
