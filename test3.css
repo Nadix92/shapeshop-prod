@@ -13,9 +13,14 @@ body{
   
 }
 
+/* .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #bb86fc !important;
+} */
+
 #parameters{
 margin: 3%;
 width: 12%;
+
 }
 
 #reset {

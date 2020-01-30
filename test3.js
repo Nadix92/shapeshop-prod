@@ -11,6 +11,7 @@ var initSdvApp = function(/*event*/) {
   // provide global access to the ShapeDiver Viewer API returned by the constructor
   api = new SDVApp.ParametricViewer(settings);
 };
+
 // there is a slight chance that loading has been completed already
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", initSdvApp, false);
@@ -28,17 +29,9 @@ reset.addEventListener("click", () => {
   });
 });
 
-// copy this logic later
-// Høgde adustment
-const tykk = document.getElementById("tykk");
-tykk.addEventListener("change", () => {
-  const høgde = document.getElementById("høgde");
-  const tykkValue = tykk.value;
-  høgde.innerHTML = "Høgde: " + tykkValue + "mm";
-  api.parameters.updateAsync([{ name: "Høgde", value: tykkValue }]);
-});
 
- const getData = () => {
+
+const getData = () => {
   const allData = api.parameters.get().data;
   const notHiddenData = [];
   const sliders = [];
@@ -70,23 +63,22 @@ tykk.addEventListener("change", () => {
     if (slider.visualization === "slider") {
       sliders.push(slider);
 
-        // let copy = document.importNode(sliderTemplate, true);
-        // let copyInput = copy.querySelector("input");
-        // let copyLabel = copy.querySelector("label");
+      //   let copy = document.importNode(sliderTemplate, true);
+      //   let copyInput = copy.querySelector("input");
+      //   let copyLabel = copy.querySelector("label");
 
-        // copyInput.value = slider.defval;
-        // copyInput.min = slider.min;
-        // copyInput.max = slider.max;
-        // copyInput.id = slider.id;
+      //   copyInput.value = slider.defval;
+      //   copyInput.min = slider.min;
+      //   copyInput.max = slider.max;
+      //   copyInput.id = slider.id;
 
-        // copyLabel.textContent = slider.name + ": " + slider.value + "mm";
-        // copyLabel.for = slider.id;
+      //   copyLabel.textContent = slider.name + ": " + slider.value + "mm";
+      //   copyLabel.for = slider.id;
 
       // document.querySelector("form").appendChild(copy);
     }
   }
 
-  
   // console.log("Here is all none hidden data to play with later");
   // console.log(notHiddenData);
 
@@ -95,20 +87,84 @@ tykk.addEventListener("change", () => {
 
   // console.log("Here is all Dropdowns to render later");
   // console.log(dropdowns);
-  return [notHiddenData, dropdowns, sliders];
+  return { notHiddenData, dropdowns, sliders };
 };
 
-const logData = () => {
-  // getData()[0] = notHiddenData
-  // getData()[1] = dropdowns
-  // getData()[2] = sliders
-  console.log(getData());
- 
-};
+// const logData = () => {
+//   // getData()[0] = notHiddenData
+//   // getData()[1] = dropdowns
+//   // getData()[2] = sliders
+//   console.log(getData());
+// };
 
-const getDataBtn = document.getElementById("data");
+// const getDataBtn = document.getElementById("data");
+// getDataBtn.addEventListener("click", logData);
 
-getDataBtn.addEventListener("click", logData);
+
+setTimeout(function() {
+  
+  // Høgde
+  høgdeInput.value = getData().sliders[0].defval; // get and sets start value "Høgde"
+  høgdeLabel.innerHTML = "Høyde: " + høgdeInput.value / 10 + "cm";
+
+  // Radius
+  radiusInput.value = getData().sliders[1].defval; // get and sets start value "Radius"
+  radiusLabel.innerHTML = "Radius: " + radiusInput.value / 10 + "cm";
+
+  // Radius
+  toppPlateRadiusInput.value = getData().sliders[2].defval; // get and sets start value "ToppPlateRadius"
+  toppPlateRadiusLabel.innerHTML = "ToppPlateRadius: " + toppPlateRadiusInput.value / 10 + "cm";
+
+  //  BreddeOppe
+  breddeOppeInput.value = getData().sliders[3].defval; // get and sets start value "BreddeOppe"
+  breddeOppeLabel.innerHTML = "BreddeOppe: " + breddeOppeInput.value / 10 + "cm";
+
+  // Bredde
+  breddeInput.value = getData().sliders[4].defval; // get and sets start value "Bredde"
+  breddeLabel.innerHTML = "Bredde: " + breddeInput.value / 10 + "cm";
+  
+}, 500);
+
+
+// Høgde adustment
+const høgdeInput = document.getElementById("høgde-input"); 
+const høgdeLabel = document.getElementById("høgde-label");
+høgdeInput.addEventListener("input", () => {
+  høgdeLabel.innerHTML = "Høyde: " + høgdeInput.value / 10 + "cm"; 
+  api.parameters.updateAsync([{ name: "Høgde", value: høgdeInput.value }]);
+});
+
+// Radius adustment
+const radiusInput = document.getElementById("radius-input"); 
+const radiusLabel = document.getElementById("radius-label"); 
+radiusInput.addEventListener("input", () => {
+  radiusLabel.innerHTML = "Radius: " + radiusInput.value / 10 + "cm"; 
+  api.parameters.updateAsync([{ name: "Radius", value: radiusInput.value }]);
+});
+
+// ToppPlateRadius adustment
+const toppPlateRadiusInput = document.getElementById("topp-plate-radius-input");
+const toppPlateRadiusLabel = document.getElementById("topp-plate-radius-label"); 
+toppPlateRadiusInput.addEventListener("input", () => {
+  toppPlateRadiusLabel.innerHTML = "ToppPlateRadius: " + toppPlateRadiusInput.value / 10 + "cm";
+  api.parameters.updateAsync([{ name: "ToppPlateRadius", value: toppPlateRadiusInput.value }]);
+});
+
+// BreddeOppe adustment
+const breddeOppeInput = document.getElementById("bredde-oppe-input");
+const breddeOppeLabel = document.getElementById("bredde-oppe-label"); 
+breddeOppeInput.addEventListener("input", () => {
+  breddeOppeLabel.innerHTML = "BreddeOppe: " + breddeOppeInput.value / 10 + "cm";
+  api.parameters.updateAsync([{ name: "BreddeOppe", value: breddeOppeInput.value }]);
+});
+
+// // Bredde adustment
+const breddeInput = document.getElementById("bredde-input"); 
+const breddeLabel = document.getElementById("bredde-label");
+breddeInput.addEventListener("input", () => {
+  breddeLabel.innerHTML = "Bredde: " + breddeInput.value / 10 + "cm"; 
+  api.parameters.updateAsync([{ name: "Bredde", value: breddeInput.value }]);
+});
 
 // const a = api.parameters.get().data
 
@@ -121,6 +177,4 @@ getDataBtn.addEventListener("click", logData);
 //   copyLabel.textContent = slider.name + ": " + copyInput.value + "mm";
 // })
 
-
-
-
+// on render set all values for input and lables on load
