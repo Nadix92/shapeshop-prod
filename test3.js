@@ -10,6 +10,10 @@ var initSdvApp = function(/*event*/) {
   };
   // provide global access to the ShapeDiver Viewer API returned by the constructor
   api = new SDVApp.ParametricViewer(settings);
+
+  // xhr = new XMLHttpRequest();
+  // xhr.open("GET", url);
+  // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
 };
 
 // there is a slight chance that loading has been completed already
@@ -28,8 +32,6 @@ reset.addEventListener("click", () => {
     target: { x: 0, y: 0, z: 500 }
   });
 });
-
-
 
 const getData = () => {
   const allData = api.parameters.get().data;
@@ -100,9 +102,7 @@ const getData = () => {
 // const getDataBtn = document.getElementById("data");
 // getDataBtn.addEventListener("click", logData);
 
-
 setTimeout(function() {
-  
   // Høgde
   høgdeInput.value = getData().sliders[0].defval; // get and sets start value "Høgde"
   høgdeLabel.innerHTML = "Høyde: " + høgdeInput.value / 10 + "cm";
@@ -113,56 +113,72 @@ setTimeout(function() {
 
   // Radius
   toppPlateRadiusInput.value = getData().sliders[2].defval; // get and sets start value "ToppPlateRadius"
-  toppPlateRadiusLabel.innerHTML = "Topp Plate Radius: " + toppPlateRadiusInput.value / 10 + "cm";
+  toppPlateRadiusLabel.innerHTML =
+    "Topp Plate Radius: " + toppPlateRadiusInput.value / 10 + "cm";
 
   //  BreddeOppe
   breddeOppeInput.value = getData().sliders[3].defval; // get and sets start value "BreddeOppe"
-  breddeOppeLabel.innerHTML = "Bredde Oppe: " + breddeOppeInput.value / 10 + "cm";
+  breddeOppeLabel.innerHTML =
+    "Bredde Oppe: " + breddeOppeInput.value / 10 + "cm";
 
   // Bredde
   breddeInput.value = getData().sliders[4].defval; // get and sets start value "Bredde"
   breddeLabel.innerHTML = "Bredde Nede: " + breddeInput.value / 10 + "cm";
-  
-}, 500);
-
+}, 1000);
 
 // Høgde adustment
-const høgdeInput = document.getElementById("høgde-input"); 
+const høgdeInput = document.getElementById("høgde-input");
 const høgdeLabel = document.getElementById("høgde-label");
 høgdeInput.addEventListener("input", () => {
-  høgdeLabel.innerHTML = "Høyde: " + høgdeInput.value / 10 + "cm"; 
+  høgdeLabel.innerHTML = "Høyde: " + høgdeInput.value / 10 + "cm";
+});
+høgdeInput.addEventListener("change", () => {
   api.parameters.updateAsync([{ name: "Høgde", value: høgdeInput.value }]);
 });
 
 // Radius adustment
-const radiusInput = document.getElementById("radius-input"); 
-const radiusLabel = document.getElementById("radius-label"); 
+const radiusInput = document.getElementById("radius-input");
+const radiusLabel = document.getElementById("radius-label");
 radiusInput.addEventListener("input", () => {
-  radiusLabel.innerHTML = "Fot Radius: " + radiusInput.value / 10 + "cm"; 
+  radiusLabel.innerHTML = "Fot Radius: " + radiusInput.value / 10 + "cm";
+});
+radiusInput.addEventListener("change", () => {
   api.parameters.updateAsync([{ name: "Radius", value: radiusInput.value }]);
 });
 
 // ToppPlateRadius adustment
 const toppPlateRadiusInput = document.getElementById("topp-plate-radius-input");
-const toppPlateRadiusLabel = document.getElementById("topp-plate-radius-label"); 
+const toppPlateRadiusLabel = document.getElementById("topp-plate-radius-label");
 toppPlateRadiusInput.addEventListener("input", () => {
-  toppPlateRadiusLabel.innerHTML = "Topp Plate Radius: " + toppPlateRadiusInput.value / 10 + "cm";
-  api.parameters.updateAsync([{ name: "ToppPlateRadius", value: toppPlateRadiusInput.value }]);
+  toppPlateRadiusLabel.innerHTML =
+    "Topp Plate Radius: " + toppPlateRadiusInput.value / 10 + "cm";
+});
+toppPlateRadiusInput.addEventListener("change", () => {
+  api.parameters.updateAsync([
+    { name: "ToppPlateRadius", value: toppPlateRadiusInput.value }
+  ]);
 });
 
 // BreddeOppe adustment
 const breddeOppeInput = document.getElementById("bredde-oppe-input");
-const breddeOppeLabel = document.getElementById("bredde-oppe-label"); 
+const breddeOppeLabel = document.getElementById("bredde-oppe-label");
 breddeOppeInput.addEventListener("input", () => {
-  breddeOppeLabel.innerHTML = "Bredde Oppe: " + breddeOppeInput.value / 10 + "cm";
-  api.parameters.updateAsync([{ name: "BreddeOppe", value: breddeOppeInput.value }]);
+  breddeOppeLabel.innerHTML =
+    "Bredde Oppe: " + breddeOppeInput.value / 10 + "cm";
+});
+breddeOppeInput.addEventListener("change", () => {
+  api.parameters.updateAsync([
+    { name: "BreddeOppe", value: breddeOppeInput.value }
+  ]);
 });
 
 // // Bredde adustment
-const breddeInput = document.getElementById("bredde-input"); 
+const breddeInput = document.getElementById("bredde-input");
 const breddeLabel = document.getElementById("bredde-label");
 breddeInput.addEventListener("input", () => {
-  breddeLabel.innerHTML = "Bredde Nede: " + breddeInput.value / 10 + "cm"; 
+  breddeLabel.innerHTML = "Bredde Nede: " + breddeInput.value / 10 + "cm";
+});
+breddeInput.addEventListener("change", () => {
   api.parameters.updateAsync([{ name: "Bredde", value: breddeInput.value }]);
 });
 
